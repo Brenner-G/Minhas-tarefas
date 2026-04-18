@@ -1,13 +1,25 @@
-meme_dict = {
-            "CRINGE": "Algo vergonhoso ou constrangedor",
-            "STALKEAR": "Investigar a vida de alguém online",
-            "VDD": "abreviação da palavra verdade ",
-            "BISCOITAR": "postar algo apenas para chamar a atenção",
-            "HATER": "pessoa que está constantemente criticando os outros",
-            "VLW": "abreviação da palavra valeu",
-            }
-word = input("Digite uma palavra moderna que você não entende (escreva todo a palavra em letras maiúsculas): ")
-if word in meme_dict.keys():
-    print(meme_dict(word))
-else:
-    print("Palavra não encontrada")
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Estamos logados como {bot.user}')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Olá! eu sou um bot {bot.user}!')
+
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
+
+
+@bot.command()
+    
+
+bot.run("")
